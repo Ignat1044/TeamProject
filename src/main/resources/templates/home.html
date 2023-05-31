@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Diploma Projects</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <h1 class="title">Diploma Projects</h1>
+</header>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th><a th:href="@{/sort/name}">Cadet Name</a></th>
+            <th><a th:href="@{/sort/project}">Project Title</a></th>
+            <th><a th:href="@{/sort/supervisor}">Supervisor</a></th>
+            <th><a th:href="@{/sort/reviewer}">Reviewer</a></th>
+            <th><a th:href="@{/sort/year}">Year</a></th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="diplomaProject : ${diplomaProjects}">
+            <td th:text="${diplomaProject.cadetName}"></td>
+            <td th:text="${diplomaProject.projectTitle}"></td>
+            <td th:text="${diplomaProject.supervisor}"></td>
+            <td th:text="${diplomaProject.reviewer}"></td>
+            <td th:text="${diplomaProject.year}"></td>
+            <td>
+                <a th:href="@{/delete/{id}(id=${diplomaProject.id})}" class="delete-link">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <a href="/add" class="add-link">Add Diploma Project</a>
+        <a href="/download/pdf" class="download-link">Download PDF</a>
+        <a href="/download/excel" class="download-link">Download Excel</a>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2023 Diploma Projects</p>
+</footer>
+</body>
+</html>
